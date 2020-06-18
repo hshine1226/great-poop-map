@@ -1,0 +1,32 @@
+{
+  "name": "great-poop-map",
+  "version": "1.0.0",
+  "description": "여자친구가 밖에만 나가면 화장실을 찾아서 만들기로 한 대똥여지도 프로젝트입니다.",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --exec babel-node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hshine1226/great-poop-map.git"
+  },
+  "author": "JUNHYUK CHOI",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hshine1226/great-poop-map/issues"
+  },
+  "homepage": "https://github.com/hshine1226/great-poop-map#readme",
+  "dependencies": {
+    "@babel/core": "^7.10.2",
+    "@babel/node": "^7.10.1",
+    "@babel/preset-env": "^7.10.2",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "express": "^4.17.1",
+    "helmet": "^3.23.1",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
