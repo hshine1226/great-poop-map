@@ -3,9 +3,13 @@ html(lang="en")
     head
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        script(type="text/javascript", src="//dapi.kakao.com/v2/maps/sdk.js?appkey=be56e50e93ab69ba616724fcdb7826fd")
+        
+        link(rel="stylesheet", href="static/styles.css")
         title #{siteName}
     body
         include ../partials/header
         main
             block content
         include ../partials/footer
+        script(src="/static/main.js")
