@@ -8,8 +8,12 @@ import routes from "./routes";
 import globalRouter from "./routers/globalRouter";
 import toiletRouter from "./routers/toiletRouter";
 import usersRouter from "./routers/usersRouter";
+import { localsMiddleware } from "./middlewares";
 
 const app = express();
+
+app.set("view engine", "pug");
+app.set("views", __dirname + "/src/views");
 
 // Middleware
 app.use(morgan("dev")); // Logging에 도움을 주는 미들웨어
@@ -17,6 +21,7 @@ app.use(helmet()); // Express App에 도움을 주는 미들웨어
 app.use(bodyParser.json()); // 서버가 json을 이해하게 해주는 미들웨어
 app.use(bodyParser.urlencoded({ extended: true })); // 서버가 urlencoded를 이해하게 해주는 미들웨어
 app.use(cookieParser()); // Session을 다루기 위한 미들웨어
+app.use(localsMiddleware);
 
 // Routers
 app.use(routes.home, globalRouter);
