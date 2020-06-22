@@ -6,7 +6,7 @@ import {
   getToiletDetail,
   getEditToilet,
   getDeleteToilet,
-} from "../controllers/toiletController";
+} from "../src/controllers/toiletController";
 
 const toiletRouter = express.Router();
 

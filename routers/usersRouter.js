@@ -6,7 +6,7 @@ import {
   getChangePassword,
   getUserDetail,
   getMe,
-} from "../controllers/userControllers";
+} from "../src/controllers/userController";
 
 const usersRouter = express.Router();
 
