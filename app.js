@@ -15,6 +15,8 @@ const app = express();
 app.set("view engine", "pug");
 app.set("views", __dirname + "/src/views");
 
+app.use("/static", express.static("static"));
+
 // Middleware
 app.use(morgan("dev")); // Logging에 도움을 주는 미들웨어
 app.use(helmet()); // Express App에 도움을 주는 미들웨어
