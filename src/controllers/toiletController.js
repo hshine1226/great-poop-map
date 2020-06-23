@@ -1,27 +1,9 @@
 import fs from "fs";
-import app from "../../app";
+import Toilet from "../../models/Toilet";
 
 export const getHome = (req, res) => res.render("home", { pageTitle: "Home" });
 
-const getToiletData = (err, data) => {
-  const toilets = JSON.parse(data);
-  // console.log(toilets.records[0].화장실명);
-  const records = toilets.records;
-
-  for (let i = 0, len = records.length; i < len; i++) {
-    let toiletObj = {};
-    toiletObj["type"] = records[i].구분;
-    toiletObj["name"] = records[i].화장실명;
-    toiletObj["adrress"] = records[i].소재지지번주소;
-    toiletObj["unisexToilet"] = records[i].남녀공용화장실여부;
-    toiletObj["openTime"] = records[i].개방시간;
-    toiletData.push(toiletObj);
-  }
-};
-
-export const getToilets = (req, res) => {
-  res.render("index", { pageTitle: "Toilets" });
-
+export const getToilets = async (req, res) => {
   const toilets = JSON.parse(
     fs.readFileSync(__dirname + "/../../data/" + "toilet_data.json", "utf-8")
   );
@@ -29,16 +11,26 @@ export const getToilets = (req, res) => {
   const toiletData = [];
   const records = toilets.records;
 
+  // for (let i = 0, len = 5; i < len; i++) {
   for (let i = 0, len = records.length; i < len; i++) {
-    let toiletObj = {};
-    toiletObj["type"] = records[i].구분;
-    toiletObj["name"] = records[i].화장실명;
-    toiletObj["adrress"] = records[i].소재지지번주소;
-    toiletObj["unisexToilet"] = records[i].남녀공용화장실여부;
-    toiletObj["openTime"] = records[i].개방시간;
-    toiletData.push(toiletObj);
+    const type = records[i].구분;
+    const name = records[i].화장실명;
+    const address = records[i].소재지지번주소;
+    const unisexToilet = records[i].남녀공용화장실여부;
+    const openTime = records[i].개방시간;
+
+    const newToilet = await Toilet.create({
+      type,
+      name,
+      address,
+      unisexToilet,
+      openTime,
+    });
+
+    console.log(newToilet);
   }
-  // console.log(toiletData);
+
+  res.render("toilets", { pageTitle: "Toilets" });
 };
 export const getAdd = (req, res) =>
   res.render("index", { pageTitle: "Add Toilets" });
