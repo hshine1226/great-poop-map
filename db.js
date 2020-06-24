@@ -3,6 +3,8 @@ import mongoose from "mongoose";
 mongoose.connect("mongodb://localhost:27017/great-poop-map", {
   useNewUrlParser: true,
   useFindAndModify: false,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
 });
 
 const db = mongoose.connection;
