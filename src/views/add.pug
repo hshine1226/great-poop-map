@@ -1,0 +1,26 @@
+extends layouts/main
+
+block content
+    form(action=`/toilets${routes.add}`, method="post")
+        .input-title
+            label(for="title") 화장실명: 
+            input(type="text", id="title" name="title", placeholder="화장실명을 적어주세요")
+        .input-time
+            label(for="start-time") 개방시간:         
+            input(id="start-time", type="time", value="09:00")
+            span ~
+            input(id="end-time", type="time", value="18:00")
+        .input-lat-long
+            label(for="latitude") 위도, 경도: 
+            input(type="text", id="latitude" name="latitude", placeholder="위도")
+            input(type="text", id="longitude" name="longitude", placeholder="경도")
+            .map(id="map", style="width:500px; height:400px;")
+        .input-submit
+            input(type="submit", value="제출하기")
+
+    button(id="myLoc") 내위치
+    
+        //- input(type="password", name="newPassword", placeholder="New Password")
+        //- input(type="password", name="newPassword1", placeholder="Verify New Password")
+        //- 
+         
