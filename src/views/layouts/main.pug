@@ -3,8 +3,9 @@ html(lang="en")
     head
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        script(type="text/javascript", src="//dapi.kakao.com/v2/maps/sdk.js?appkey=be56e50e93ab69ba616724fcdb7826fd&libraries=services,clusterer")
-        
+        script(type="text/javascript", src=`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.KAKAO_KEY}&libraries=services,clusterer`)
+        script(src="//code.jquery.com/jquery-1.11.0.min.js")
+        script(type="text/javascript", src="//d1l4stvdmqmdzl.cloudfront.net/3.9.6/mongoose.js")
         link(rel="stylesheet", href="static/styles.css")
         title #{siteName}
     body
