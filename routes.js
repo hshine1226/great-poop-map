@@ -18,6 +18,12 @@ const TOILET_DETAIL = "/:id";
 const EDIT_TOILET = "/:id/edit";
 const DELETE_TOILET = "/:id/delete";
 
+// API routes
+const API = "/api";
+const ADD_MAP = "/maps";
+const ADD_LATLGN = "/latlng/:address";
+const GET_TOILETS = "/toilets";
+
 const routes = {
   home: HOME,
   join: JOIN,
@@ -33,6 +39,10 @@ const routes = {
   toiletDetail: TOILET_DETAIL,
   editToilet: EDIT_TOILET,
   deleteToilet: DELETE_TOILET,
+  api: API,
+  addMap: ADD_MAP,
+  addLatLng: ADD_LATLGN,
+  getToilets: GET_TOILETS,
 };
 
 export default routes;
