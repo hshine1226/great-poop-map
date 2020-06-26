@@ -8,6 +8,7 @@ import routes from "./routes";
 import globalRouter from "./routers/globalRouter";
 import toiletRouter from "./routers/toiletRouter";
 import usersRouter from "./routers/usersRouter";
+import apiRouter from "./routers/apiRouter";
 import { localsMiddleware } from "./middlewares";
 
 const app = express();
@@ -29,5 +30,6 @@ app.use(localsMiddleware);
 app.use(routes.home, globalRouter);
 app.use(routes.toilets, toiletRouter);
 app.use(routes.users, usersRouter);
+app.use(routes.api, apiRouter);
 
 export default app;
