@@ -3,27 +3,28 @@ import mongoose from "mongoose";
 const ToiletSchema = new mongoose.Schema({
   type: {
     type: String,
-    // required: "Type is required",
   },
   name: {
     type: String,
-    // required: "Name is required",
   },
   address: {
     type: String,
-    // required: "Adrress is required",
+    unique: false,
   },
   unisexToilet: String,
   openTime: {
     type: String,
   },
-  latitude: {
-    type: Number,
-  },
-  longitude: {
-    type: Number,
+  location: {
+    type: {
+      type: String,
+      default: "Point",
+    },
+    coordinates: [Number],
   },
 });
+
+ToiletSchema.index({ location: "2dsphere" });
 
 const model = mongoose.model("Toilet", ToiletSchema);
 
