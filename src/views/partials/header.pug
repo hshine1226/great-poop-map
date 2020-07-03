@@ -7,11 +7,15 @@ header.header
                 svg(class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg")
                     title Menu
                     path(d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z")
-        div(class="w-full block flex-grow lg:flex lg:items-center lg:w-auto")
-            div(class="text-sm lg:flex-grow")
+        div(class="w-full block flex-grow lg:flex lg:justify-between lg:items-center lg:w-auto")
+            div(class="text-sm")
                 a(href=routes.home, class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4") 홈
                 a(href=routes.toilets, class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4") 주변 화장실 찾기
                 a(href=`/toilets${routes.add}`, class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4") 화장실 추가
                 a(href=`/users${routes.userDetail}`, class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4") 프로필
-                a(href=routes.login, class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white") 로그인
+            div(class="text-sm")
+                if(loggedUser !== null)
+                    a(href=routes.logout, class="block mt-4 mr-2 lg:inline-block lg:mt-0 text-teal-200 hover:text-white") 로그아웃
+                else
+                    a(href=routes.login, class="block mt-4 mr-2 lg:inline-block lg:mt-0 text-teal-200 hover:text-white") 로그인
             

@@ -8,7 +8,6 @@ export const getToilets = async (req, res) => {
 };
 
 export const getAdd = async (req, res) => {
-  console.log(Toilet);
   const toilet = await Toilet.find({});
   const name = toilet[0].name;
   const address = toilet[0].address;

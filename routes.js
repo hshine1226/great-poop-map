@@ -23,6 +23,7 @@ const API = "/api";
 const ADD_MAP = "/maps";
 const ADD_LATLGN = "/latlng/:address";
 const GET_TOILETS = "/toilets";
+const GET_DETAIL = "/:id";
 
 const routes = {
   home: HOME,
@@ -43,6 +44,7 @@ const routes = {
   addMap: ADD_MAP,
   addLatLng: ADD_LATLGN,
   getToilets: GET_TOILETS,
+  getToiletDetail: GET_DETAIL,
 };
 
 export default routes;

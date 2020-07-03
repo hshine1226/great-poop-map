@@ -18,14 +18,12 @@ export const postAddLatLng = async (req, res) => {
   try {
     const toilets = await Toilet.find({});
     let addressArr = [];
-    // console.log(toilets);
     for (const toilet in toilets) {
       let addressObj = {};
       addressObj["id"] = toilets[toilet]._id;
       addressObj["address"] = toilets[toilet].address;
       addressArr.push(addressObj);
     }
-
     res.send(addressArr);
     res.status(200);
   } catch (err) {
@@ -42,10 +40,25 @@ export const getToilets = async (req, res) => {
   } = req;
 
   const toilets = await findNearToilet(latt, long);
-  // console.log(toilets);
-
   try {
     res.send(toilets);
+  } catch (err) {
+    res.status(400);
+    console.log(err);
+  } finally {
+    res.end();
+  }
+};
+
+export const getToiletDetail = async (req, res) => {
+  const {
+    params: { id },
+  } = req;
+
+  const toilet = await Toilet.findById({ _id: id });
+
+  try {
+    res.send(toilet);
   } catch (err) {
     res.status(400);
     console.log(err);
