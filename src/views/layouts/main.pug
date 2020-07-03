@@ -6,11 +6,11 @@ html(lang="en")
         script(type="text/javascript", src=`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.KAKAO_KEY}&libraries=services,clusterer`)
         script(src="//code.jquery.com/jquery-1.11.0.min.js")
         script(type="text/javascript", src="//d1l4stvdmqmdzl.cloudfront.net/3.9.6/mongoose.js")
-        link(rel="stylesheet", href="static/styles.css")
-        title #{siteName}
-    body
+        link(rel="stylesheet", href="/static/styles.css")
+        title #{siteName} | #{pageTitle}
+    body.flex.flex-col.justify-between(class="h-screen")
         include ../partials/header
-        main
+        main(class="h-screen")
             block content
         include ../partials/footer
         script(src="/static/main.js")
