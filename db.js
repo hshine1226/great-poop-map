@@ -41,7 +41,7 @@ export const findNearToilet = async (long, latt) => {
       location: {
         $near: {
           // distance in meters
-          $maxDistance: 1000,
+          $maxDistance: 500,
           $geometry: {
             type: "Point",
             coordinates: [long, latt],
