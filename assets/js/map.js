@@ -82,13 +82,15 @@ const getToilets = async (latt, long) => {
       const markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
 
       // 마커를 생성합니다
-      const latLng = new kakao.maps.LatLng(latt, long);
-      const marker = new kakao.maps.Marker({
+      let marker = new kakao.maps.Marker({
         map: map, // 마커를 표시할 지도
         position: new kakao.maps.LatLng(latt, long), // 마커를 표시할 위치
         title: toilets[idx].name, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
         image: markerImage, // 마커 이미지
       });
+
+      // 마커의 해당 화장실 id 추가
+      marker.id = toilets[idx]._id;
 
       // 마커에 표시할 인포윈도우를 생성합니다
       const infowindow = new kakao.maps.InfoWindow({
@@ -105,9 +107,59 @@ const getToilets = async (latt, long) => {
         "mouseout",
         makeOutListener(infowindow)
       );
+      // Click Listener
+      kakao.maps.event.addListener(marker, "click", () =>
+        handleClickListener(marker)
+      );
       marker.setMap(map);
     }
   }
+};
+
+const setToiletDetail = (toilet) => {
+  console.log(toilet);
+  const tbody = document.getElementById("jsTbody");
+  const tr = document.createElement("tr");
+  const td1 = document.createElement("td");
+  const td2 = document.createElement("td");
+  const td3 = document.createElement("td");
+  td1.className = "px-6 py-4 whitespace-no-wrap border-b border-gray-200";
+  td2.className = "px-6 py-4 whitespace-no-wrap border-b border-gray-200";
+  td3.className =
+    "px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium";
+  const a = document.createElement("a");
+  a.href = "#";
+  a.className = "text-indigo-600 hover:text-indigo-900";
+  a.innerHTML = "길찾기";
+  const title = document.createElement("div");
+  title.innerHTML = toilet.name;
+  title.className = "text-sm leading-5 font-medium text-gray-900";
+  const time = document.createElement("div");
+  time.innerHTML = toilet.openTime;
+  time.className = "text-sm leading-5 font-medium text-gray-900";
+
+  tbody.append(tr);
+  tr.append(td1);
+  tr.append(td2);
+  tr.append(td3);
+  td1.append(title);
+  td2.append(time);
+  td3.append(a);
+};
+
+const getToiletById = async (id) => {
+  const response = await axios({
+    url: `/api/${id}`,
+    method: "GET",
+  });
+  if (response.status === 200) {
+    const toilet = response.data;
+    setToiletDetail(toilet);
+  }
+};
+const handleClickListener = (marker) => {
+  const toiletId = marker.id;
+  getToiletById(toiletId);
 };
 
 // 인포윈도우를 표시하는 클로저를 만드는 함수입니다
