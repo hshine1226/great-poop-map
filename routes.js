@@ -18,6 +18,11 @@ const TOILET_DETAIL = "/:id";
 const EDIT_TOILET = "/:id/edit";
 const DELETE_TOILET = "/:id/delete";
 
+const NAVER = "/auth/naver";
+const NAVER_CALLBACK = "/auth/naver/callback";
+const KAKAO = "/auth/kakao";
+const KAKAO_CALLBACK = "/auth/kakao/callback";
+
 // API routes
 const API = "/api";
 const ADD_MAP = "/maps";
@@ -45,6 +50,10 @@ const routes = {
   addLatLng: ADD_LATLGN,
   getToilets: GET_TOILETS,
   getToiletDetail: GET_DETAIL,
+  naver: NAVER,
+  naverCallback: NAVER_CALLBACK,
+  kakao: KAKAO,
+  kakaoCallback: KAKAO_CALLBACK,
 };
 
 export default routes;

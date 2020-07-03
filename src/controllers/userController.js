@@ -37,7 +37,7 @@ export const postLogin = passport.authenticate("local", {
   successRedirect: routes.home,
 });
 
-export const postLogout = (req, res) => {
+export const logout = (req, res) => {
   req.logout();
   res.redirect(routes.home);
 };
@@ -50,3 +50,31 @@ export const getChangePassword = (req, res) =>
 export const getUserDetail = (req, res) =>
   res.render("index", { pageTitle: "User Detail" });
 export const getMe = (req, res) => res.render("index", { pageTitle: "Me" });
+
+export const naverLogin = passport.authenticate("naver");
+export const naverLoginCallback = async (_, __, profile, cb) => {
+  const {
+    _json: { id, profile_image: avatarUrl, email, nickname: name },
+  } = profile;
+  try {
+    const user = await User.findOne({ email });
+    if (user) {
+      user.naverId = id;
+      user.avatarUrl = avatarUrl;
+      user.save();
+      return cb(null, user);
+    }
+    const newUser = await User.create({
+      email,
+      naverId: id,
+      name,
+      avatarUrl,
+    });
+    return cb(null, newUser);
+  } catch (error) {
+    return cb(error);
+  }
+};
+export const postNaverLogin = (req, res) => {
+  res.redirect(routes.home);
+};
