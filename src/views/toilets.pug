@@ -1,8 +1,21 @@
 extends layouts/main
 
 block content
-    h1 #{pageTitle}
-    .map(id="map", style="width:500px; height:400px;")
-    button#jsSetMyloc 내위치
-    button#jsGetToilets 주변 화장실 보기
-    
+    .container.flex.flex-row.mx-auto.justify-around.items-center
+        .container(class="flex flex-col mx-auto mr-32")
+            .map(id="map", class="mx-auto")
+            .flex.justify-center
+                button(class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full", id="jsSetMyloc") 내위치
+                button(class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full", id="jsGetToilets") 주변 500m 화장실
+        .container
+        .flex.flex-col
+            div(class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8")
+                div(class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200")
+                    table(class="min-w-300px w-auto" id="jsTable")
+                        thead
+                            tr
+                                th(class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider") 화장실 이름
+                                th(class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider") 운영시간                                
+                                th(class="px-6 py-3 border-b border-gray-200 bg-gray-50")
+                        tbody(class="bg-white" id="jsTbody")
+                            
