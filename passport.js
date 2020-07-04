@@ -1,7 +1,11 @@
 import passport from "passport";
 import NaverStrategy from "passport-naver";
+import KakaoStrategy from "passport-kakao";
 import User from "./models/User";
-import { naverLoginCallback } from "./src/controllers/userController";
+import {
+  naverLoginCallback,
+  kakaoLoginCallback,
+} from "./src/controllers/userController";
 import routes from "./routes";
 import dotenv from "dotenv";
 dotenv.config();
@@ -16,6 +20,17 @@ passport.use(
       callbackURL: `http://localhost:4000${routes.naverCallback}`,
     },
     naverLoginCallback
+  )
+);
+
+passport.use(
+  new KakaoStrategy(
+    {
+      clientID: process.env.KAKAO_KEY,
+      clientSecret: process.env.KAKAO_SECRET,
+      callbackURL: `http://localhost:4000${routes.kakaoCallback}`,
+    },
+    kakaoLoginCallback
   )
 );
 

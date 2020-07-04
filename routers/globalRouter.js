@@ -9,6 +9,8 @@ import {
   logout,
   naverLogin,
   postNaverLogin,
+  kakaoLogin,
+  postKakaoLogin,
 } from "../src/controllers/userController";
 import passport from "passport";
 
@@ -26,6 +28,13 @@ globalRouter.get(
   routes.naverCallback,
   passport.authenticate("naver", { failureRedirect: "/login" }),
   postNaverLogin
+);
+
+globalRouter.get(routes.kakao, kakaoLogin);
+globalRouter.get(
+  routes.kakaoCallback,
+  passport.authenticate("kakao", { failureRedirect: "/login" }),
+  postKakaoLogin
 );
 
 export default globalRouter;
