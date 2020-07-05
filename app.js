@@ -24,6 +24,7 @@ const CookieStore = MongoStore(session);
 // Middleware
 app.use(helmet()); // Express App에 도움을 주는 미들웨어
 app.set("view engine", "pug");
+app.use("/uploads", express.static("uploads"));
 app.use("/static", express.static("static"));
 
 app.set("views", __dirname + "/src/views");
