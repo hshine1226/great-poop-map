@@ -4,16 +4,20 @@ import {
   getUsers,
   getEditProfile,
   getChangePassword,
-  getUserDetail,
-  getMe,
+  getUserProfile,
+  postEditProfile,
 } from "../src/controllers/userController";
+import { uploadAvatar } from "../middlewares";
 
 const usersRouter = express.Router();
 
 usersRouter.get(routes.home, getUsers);
+
 usersRouter.get(routes.editProfile, getEditProfile);
+usersRouter.post(routes.editProfile, uploadAvatar, postEditProfile);
+
 usersRouter.get(routes.changePassword, getChangePassword);
-usersRouter.get(routes.me, getMe);
-usersRouter.get(routes.userDetail, getUserDetail);
+
+usersRouter.get(routes.userProfile, getUserProfile);
 
 export default usersRouter;

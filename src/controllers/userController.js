@@ -43,13 +43,50 @@ export const logout = (req, res) => {
 };
 export const getUsers = (req, res) =>
   res.render("index", { pageTitle: "Users" });
-export const getEditProfile = (req, res) =>
-  res.render("index", { pageTitle: "Edit Profile" });
+
+export const getEditProfile = (req, res) => {
+  res.render("editProfile", { pageTitle: "Edit Profile" });
+};
+
+export const postEditProfile = async (req, res) => {
+  const {
+    body: { name, email, nickname },
+    file,
+  } = req;
+
+  try {
+    await User.findByIdAndUpdate(req.user._id, {
+      name,
+      email,
+      nickname,
+      avatarUrl: file ? file.path : req.user.avatarUrl,
+    });
+    res.redirect(routes.me);
+  } catch (error) {
+    res.redirect(routes.editProfile);
+  }
+};
+
 export const getChangePassword = (req, res) =>
   res.render("index", { pageTitle: "Change Password" });
-export const getUserDetail = (req, res) =>
-  res.render("index", { pageTitle: "User Detail" });
-export const getMe = (req, res) => res.render("index", { pageTitle: "Me" });
+
+export const getUserProfile = async (req, res) => {
+  const {
+    user: { _id: id },
+  } = req;
+
+  try {
+    const user = await User.findById(id);
+    console.log(user);
+    res.render("profile", { pageTitle: "User Profile", user });
+  } catch (error) {
+    res.redirect("/");
+  }
+};
+
+export const getMe = (req, res) => {
+  res.render("profile", { pageTitle: "User Detail", user: req.user });
+};
 
 export const naverLogin = passport.authenticate("naver");
 export const naverLoginCallback = async (_, __, profile, cb) => {

@@ -11,6 +11,7 @@ import {
   postNaverLogin,
   kakaoLogin,
   postKakaoLogin,
+  getMe,
 } from "../src/controllers/userController";
 import passport from "passport";
 
@@ -36,5 +37,7 @@ globalRouter.get(
   passport.authenticate("kakao", { failureRedirect: "/login" }),
   postKakaoLogin
 );
+
+globalRouter.get(routes.me, getMe);
 
 export default globalRouter;

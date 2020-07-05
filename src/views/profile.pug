@@ -1,3 +1,13 @@
 extends layouts/main 
 block content
-    
+    .user-profile(class="flex flex-col justify-center items-center mt-20")
+        .user-profile__header(class="flex flex-col justify-center items-center")
+            img.u-avatar(src=user.avatarUrl, class="w-64 rounded-full mb-6")
+            h4.profile__username(class="text-xl font-semibold")=user.name
+        if loggedUser !== null
+            if user.id === loggedUser.id
+                .user-profile__btns(class="mt-4")
+                    a(href=`/users${routes.editProfile}`, class="mr-2")
+                        button(class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline") 프로필 수정
+                    a(href=`/users${routes.changePassword}`)
+                        button(class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline") 비밀번호 변경
