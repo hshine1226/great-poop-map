@@ -3,6 +3,7 @@ import passportLocalMongoose from "passport-local-mongoose";
 
 const userSchema = new mongoose.Schema({
   name: String,
+  nickname: String,
   email: String,
   avatarUrl: String,
   naverId: Number,
