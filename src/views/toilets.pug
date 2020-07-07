@@ -3,9 +3,8 @@ extends layouts/main
 block content
     .container.flex.flex-row.mx-auto.justify-around.items-center
         .container(class="flex flex-col mx-auto mr-32")
-            .map(id="map", class="mx-auto")
+            .map(id="googleMap", class="mx-auto")
             .flex.justify-center
-                button(class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full", id="jsSetMyloc") 내위치
                 button(class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full", id="jsGetToilets") 주변 500m 화장실
         .container
         .flex.flex-col

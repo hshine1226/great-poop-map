@@ -3,15 +3,25 @@ html(lang="en")
     head
         meta(charset="UTF-8")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        script(type="text/javascript", src=`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.KAKAO_KEY}&libraries=services,clusterer`)
-        script(src="//code.jquery.com/jquery-1.11.0.min.js")
-        script(type="text/javascript", src="//d1l4stvdmqmdzl.cloudfront.net/3.9.6/mongoose.js")
-        script(src="https://kit.fontawesome.com/142b9259dc.js" crossorigin="anonymous")
         link(rel="stylesheet", href="/static/styles.css")
-        title #{siteName} | #{pageTitle}
+        title #{siteName} | #{pageTitle}       
     body(class="flex flex-col justify-between h-screen")
         include ../partials/header
         main(class="h-full")
             block content
         include ../partials/footer
+        //- script(type="text/javascript", src=`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.KAKAO_KEY}&libraries=services,clusterer`)
+        <script src="https://cdn.klokantech.com/maptilerlayer/v1/index.js"></script>
+        script(type="text/javascript", src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVsLljaNNAk_DW6CR8VYnh2o0PHfhRMR4")
+        script(src="https://unpkg.com/@google/markerclustererplus@4.0.1/dist/markerclustererplus.min.js")
+        
+        script(src="https://kit.fontawesome.com/142b9259dc.js" crossorigin="anonymous")
         script(src="/static/main.js")
+        
+        
+        
+        
+
+
+      
+
