@@ -14,7 +14,6 @@ const ME = "/me";
 // Toilet routes
 const TOILETS = "/toilets";
 const ADD = "/add";
-const TOILET_DETAIL = "/:id";
 const EDIT_TOILET = "/:id/edit";
 const DELETE_TOILET = "/:id/delete";
 
@@ -25,8 +24,9 @@ const KAKAO_CALLBACK = "/auth/kakao/callback";
 
 // API routes
 const API = "/api";
-const GET_TOILETS = "/toilets";
+const GET_NEAR_TOILETS = "/toilets";
 const GET_BOX_TOILETS = "/toilets/box";
+const TOILET_DETAIL = "/toilets/:id";
 
 const routes = {
   home: HOME,
@@ -40,13 +40,13 @@ const routes = {
   me: ME,
   toilets: TOILETS,
   add: ADD,
-  toiletDetail: TOILET_DETAIL,
   editToilet: EDIT_TOILET,
   deleteToilet: DELETE_TOILET,
 
   api: API,
-  getToilets: GET_TOILETS,
-  getBoxToilet: GET_BOX_TOILETS,
+  nearToilets: GET_NEAR_TOILETS,
+  boxToilet: GET_BOX_TOILETS,
+  toiletDetail: TOILET_DETAIL,
 
   naver: NAVER,
   naverCallback: NAVER_CALLBACK,
