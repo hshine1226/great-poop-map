@@ -1,2 +1,4 @@
 import "../scss/styles.scss";
-import "./map";
+// import "./map";
+import "./googleMap";
+import "./markerClusterer";
