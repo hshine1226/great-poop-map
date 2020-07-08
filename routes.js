@@ -25,10 +25,8 @@ const KAKAO_CALLBACK = "/auth/kakao/callback";
 
 // API routes
 const API = "/api";
-const ADD_MAP = "/maps";
-const ADD_LATLGN = "/latlng/:address";
 const GET_TOILETS = "/toilets";
-const GET_DETAIL = "/:id";
+const GET_BOX_TOILETS = "/toilets/box";
 
 const routes = {
   home: HOME,
@@ -45,11 +43,11 @@ const routes = {
   toiletDetail: TOILET_DETAIL,
   editToilet: EDIT_TOILET,
   deleteToilet: DELETE_TOILET,
+
   api: API,
-  addMap: ADD_MAP,
-  addLatLng: ADD_LATLGN,
   getToilets: GET_TOILETS,
-  getToiletDetail: GET_DETAIL,
+  getBoxToilet: GET_BOX_TOILETS,
+
   naver: NAVER,
   naverCallback: NAVER_CALLBACK,
   kakao: KAKAO,

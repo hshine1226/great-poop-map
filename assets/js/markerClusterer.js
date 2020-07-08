@@ -18,9 +18,23 @@ const getToilets = async (latt, long) => {
   }
 };
 
-const setToiletsMarker = async () => {
-  const center = { lat: 36.3154865690411, lng: 127.446044443222 };
-  const toilets = await getToilets(center["lng"], center["lat"]);
+const getBoxToilets = async (bl, ur) => {
+  const response = await axios({
+    url: `api/toilets/box`,
+    method: "POST",
+    data: {
+      bl,
+      ur,
+    },
+  });
+  if (response.status === 200) {
+    const toilets = response.data;
+    return toilets;
+  }
+};
+
+const setToiletsMarker = async (bl, ur) => {
+  const toilets = await getBoxToilets(bl, ur);
 
   let markers = toilets.map(function (toilet, i) {
     return new google.maps.Marker({
@@ -38,4 +52,13 @@ const setToiletsMarker = async () => {
   });
 };
 
-setToiletsMarker(currentLocation);
+googleMap.addListener("bounds_changed", function () {
+  const bounds = googleMap.getBounds();
+
+  // 현재 지도의 범위 내의 upper right, bottom left 좌표를 Array 형태로 받아온다.
+  const bl = [bounds.Ua.i, bounds.Za.i];
+  const ur = [bounds.Ua.j, bounds.Za.j];
+  setToiletsMarker(bl, ur);
+});
+
+// setToiletsMarker(currentLocation);

@@ -1,5 +1,5 @@
 import Toilet from "../../models/Toilet";
-import { findNearToilet } from "../../db";
+import { findNearToilet, findBoxToilets } from "../../db";
 
 export const getMaps = async (req, res) => {
   try {
@@ -40,6 +40,7 @@ export const getToilets = async (req, res) => {
   } = req;
 
   const toilets = await findNearToilet(latt, long);
+
   try {
     res.send(toilets);
   } catch (err) {
@@ -65,4 +66,22 @@ export const getToiletDetail = async (req, res) => {
   } finally {
     res.end();
   }
+};
+
+export const getBoxToilet = async (req, res) => {
+  const {
+    body: { bl, ur },
+  } = req;
+  const toilets = await findBoxToilets(bl, ur);
+
+  try {
+    res.send(toilets);
+  } catch (err) {
+    res.status(400);
+    console.log(err);
+  } finally {
+    res.end();
+  }
+
+  // findBoxToilets([127.374834, 36.3161141], [127.4427072, 36.3467431]);
 };
