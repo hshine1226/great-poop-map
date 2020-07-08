@@ -1,6 +1,13 @@
 import mongoose from "mongoose";
 
 const ToiletSchema = new mongoose.Schema({
+  location: {
+    type: {
+      type: String,
+      default: "Point",
+    },
+    coordinates: [Number],
+  },
   type: {
     type: String,
   },
@@ -15,13 +22,20 @@ const ToiletSchema = new mongoose.Schema({
   openTime: {
     type: String,
   },
-  location: {
-    type: {
-      type: String,
-      default: "Point",
-    },
-    coordinates: [Number],
+  createdAt: {
+    type: Date,
+    default: Date.now,
   },
+  creator: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+  },
+  comments: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Comment",
+    },
+  ],
 });
 
 ToiletSchema.index({ location: "2dsphere" });
