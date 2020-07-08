@@ -34,7 +34,7 @@ export const postAddLatLng = async (req, res) => {
   }
 };
 
-export const getToilets = async (req, res) => {
+export const getNearToilets = async (req, res) => {
   const {
     query: { latt, long },
   } = req;

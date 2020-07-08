@@ -1,9 +1,14 @@
 import express from "express";
 import routes from "../routes";
-import { getToilets, getBoxToilet } from "../src/controllers/apiController";
+import {
+  getBoxToilet,
+  getNearToilets,
+  getToiletDetail,
+} from "../src/controllers/apiController";
 
 const apiRouter = express.Router();
-apiRouter.get(routes.getToilets, getToilets);
-apiRouter.post(routes.getBoxToilet, getBoxToilet);
+apiRouter.get(routes.nearToilets, getNearToilets);
+apiRouter.post(routes.boxToilet, getBoxToilet);
+apiRouter.get(routes.toiletDetail, getToiletDetail);
 
 export default apiRouter;

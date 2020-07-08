@@ -12,8 +12,6 @@ export const getAdd = async (req, res) => {
   const name = toilet[0].name;
   const address = toilet[0].address;
 
-  console.log(name, "&", address);
-
   res.render("add", { pageTitle: "Add Toilets" });
 };
 
