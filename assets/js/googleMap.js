@@ -32,6 +32,7 @@ function addYourLocationButton(map) {
     secondChild.style["background-position"] = "0 0";
   });
 
+  let marker;
   firstChild.addEventListener("click", function () {
     var imgX = 0,
       animationInterval = setInterval(function () {
@@ -41,14 +42,17 @@ function addYourLocationButton(map) {
 
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function (position) {
-        console.log(position);
         var latlng = new google.maps.LatLng(
           position.coords.latitude,
           position.coords.longitude
         );
         map.setCenter(latlng);
-        var marker = new google.maps.Marker({
+        if (marker) {
+          marker.setMap(null);
+        }
+        marker = new google.maps.Marker({
           position: latlng,
+          label: "내위치",
           map,
         });
         clearInterval(animationInterval);
