@@ -15,6 +15,10 @@ export const getAdd = async (req, res) => {
   res.render("add", { pageTitle: "Add Toilets" });
 };
 
+export const getComments = (req, res) => {
+  res.render("comments");
+};
+
 export const getToiletDetail = (req, res) =>
   res.render("index", { pageTitle: "Toilet Detail" });
 export const getEditToilet = (req, res) =>
