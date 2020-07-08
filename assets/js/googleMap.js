@@ -1,5 +1,7 @@
 export let googleMap;
 
+const mapContainer = document.getElementById("googleMap-container");
+
 function addYourLocationButton(map) {
   var controlDiv = document.createElement("div");
 
@@ -80,4 +82,6 @@ function initMap() {
   addYourLocationButton(googleMap);
 }
 
-initMap();
+if (mapContainer) {
+  initMap();
+}
