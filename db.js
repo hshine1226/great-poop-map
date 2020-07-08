@@ -41,7 +41,7 @@ export const findNearToilet = async (long, latt) => {
       location: {
         $near: {
           // distance in meters
-          $maxDistance: 500,
+          $maxDistance: 1000,
           $geometry: {
             type: "Point",
             coordinates: [long, latt],
@@ -50,6 +50,21 @@ export const findNearToilet = async (long, latt) => {
       },
     });
     return toilet;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const findBoxToilets = async (bl, ur) => {
+  try {
+    const toilets = await Toilet.find({
+      location: {
+        $geoWithin: {
+          $box: [bl, ur],
+        },
+      },
+    });
+    return toilets;
   } catch (err) {
     console.log(err);
   }
