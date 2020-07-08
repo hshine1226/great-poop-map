@@ -1,4 +1,5 @@
 import Toilet from "../../models/Toilet";
+import User from "../../models/User";
 import { findNearToilet, findBoxToilets } from "../../db";
 
 export const getMaps = async (req, res) => {
@@ -65,6 +66,25 @@ export const getToiletDetail = async (req, res) => {
     console.log(err);
   } finally {
     res.end();
+  }
+};
+
+export const checkEmail = async (req, res) => {
+  const {
+    params: { email },
+  } = req;
+  console.log(email);
+
+  const user = await User.findOne({ email });
+  try {
+    if (user) {
+      res.send(true);
+    }
+    res.send(false);
+  } catch (err) {
+    res.status(400);
+  } finally {
+    res.end;
   }
 };
 
