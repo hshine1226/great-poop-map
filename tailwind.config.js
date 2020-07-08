@@ -1,10 +1,17 @@
 module.exports = {
   purge: [],
   theme: {
-    minWidth: {
-      "300px": "300px",
+    extend: {
+      minWidth: {
+        "300px": "300px",
+      },
+      width: {
+        "500px": "500px",
+      },
+      height: {
+        "500px": "500px",
+      },
     },
-    extend: {},
   },
   variants: {},
   plugins: [],
