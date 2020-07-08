@@ -7,7 +7,7 @@ html(lang="en")
         title #{siteName} | #{pageTitle}       
     body(class="flex flex-col justify-between h-screen")
         include ../partials/header
-        main(class="h-full")
+        main(class="h-full w-full")
             block content
         include ../partials/footer
         //- script(type="text/javascript", src=`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.KAKAO_KEY}&libraries=services,clusterer`)
