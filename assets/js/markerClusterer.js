@@ -1,5 +1,8 @@
-import { googleMap, getCurrentLocation } from "./googleMap";
 import axios from "axios";
+import { googleMap } from "./googleMap";
+import { addToiletDetail } from "./home";
+
+export let markerCluster;
 
 const getToilets = async (latt, long) => {
   const response = await axios({
@@ -33,32 +36,46 @@ const getBoxToilets = async (bl, ur) => {
   }
 };
 
-const setToiletsMarker = async (bl, ur) => {
+export const clearMarkers = () => {
+  if (markerCluster) {
+    markerCluster.clearMarkers();
+  }
+};
+
+export const setToiletsMarker = async (bl, ur) => {
   const toilets = await getBoxToilets(bl, ur);
 
   let markers = toilets.map(function (toilet, i) {
-    return new google.maps.Marker({
+    const marker = new google.maps.Marker({
       position: {
         lat: toilet.location.coordinates[1],
         lng: toilet.location.coordinates[0],
       },
       label: toilet.name,
     });
+
+    marker.id = toilet._id;
+
+    const handleMarkerClick = async () => {
+      const toiletId = marker.id;
+      const response = await axios({
+        url: `api/toilets/${toiletId}`,
+        method: "GET",
+      });
+      if (response.status === 200) {
+        const toilet = response.data;
+        addToiletDetail(toilet);
+        console.log(toilet);
+      }
+    };
+
+    // 마커에 click 이벤트 리스너 등록
+    marker.addListener("click", handleMarkerClick);
+    return marker;
   });
 
-  var markerCluster = new MarkerClusterer(googleMap, markers, {
+  markerCluster = new MarkerClusterer(googleMap, markers, {
     imagePath:
       "https://github.com/googlemaps/v3-utility-library/blob/master/packages/markerclustererplus/images/m1.png?raw=true",
   });
 };
-
-googleMap.addListener("bounds_changed", function () {
-  const bounds = googleMap.getBounds();
-
-  // 현재 지도의 범위 내의 upper right, bottom left 좌표를 Array 형태로 받아온다.
-  const bl = [bounds.Ua.i, bounds.Za.i];
-  const ur = [bounds.Ua.j, bounds.Za.j];
-  setToiletsMarker(bl, ur);
-});
-
-// setToiletsMarker(currentLocation);
