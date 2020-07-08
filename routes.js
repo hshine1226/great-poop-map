@@ -14,6 +14,7 @@ const ME = "/me";
 // Toilet routes
 const TOILETS = "/toilets";
 const ADD = "/add";
+const COMMENTS = "/comments";
 const EDIT_TOILET = "/:id/edit";
 const DELETE_TOILET = "/:id/delete";
 
@@ -27,6 +28,7 @@ const API = "/api";
 const GET_NEAR_TOILETS = "/toilets";
 const GET_BOX_TOILETS = "/toilets/box";
 const TOILET_DETAIL = "/toilets/:id";
+const CHECK_EMAIL = "/users/:email";
 
 const routes = {
   home: HOME,
@@ -40,6 +42,7 @@ const routes = {
   me: ME,
   toilets: TOILETS,
   add: ADD,
+  comments: COMMENTS,
   editToilet: EDIT_TOILET,
   deleteToilet: DELETE_TOILET,
 
@@ -47,6 +50,7 @@ const routes = {
   nearToilets: GET_NEAR_TOILETS,
   boxToilet: GET_BOX_TOILETS,
   toiletDetail: TOILET_DETAIL,
+  checkEmail: CHECK_EMAIL,
 
   naver: NAVER,
   naverCallback: NAVER_CALLBACK,
