@@ -9,8 +9,13 @@ export const postJoin = async (req, res, next) => {
     body: { name, email, password, password2 },
   } = req;
 
+  const user = await User.findOne({ email });
   if (password !== password2) {
     res.status(400); // 잘못된 요청
+    res.render("join", { pageTitle: "Join" });
+  } else if (user) {
+    console.log("이메일 중복");
+    res.status(400);
     res.render("join", { pageTitle: "Join" });
   } else {
     try {
@@ -77,7 +82,7 @@ export const getUserProfile = async (req, res) => {
 
   try {
     const user = await User.findById(id);
-    console.log(user);
+    // console.log(user);
     res.render("profile", { pageTitle: "User Profile", user });
   } catch (error) {
     res.redirect("/");
