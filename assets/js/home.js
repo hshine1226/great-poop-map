@@ -8,10 +8,13 @@ const toiletTime = document.getElementById("js-toiletTime");
 const findWayBtn = document.getElementById("js-findWay");
 const commentBtn = document.getElementById("js-comment");
 const findToiletBtn = document.getElementById("js-findToilet");
+const commentAchor = document.getElementById("js-commentAchor");
 
 export const addToiletDetail = (toilet) => {
   toiletName.innerHTML = toilet.name;
   toiletTime.innerHTML = toilet.openTime;
+  commentAchor.href = `/toilets/${toilet._id}`;
+
   findWayBtn.classList.remove("invisible");
   commentBtn.classList.remove("invisible");
 };

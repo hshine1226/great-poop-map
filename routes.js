@@ -8,13 +8,12 @@ const LOGOUT = "/logout";
 const USERS = "/users";
 const EDIT_PROFILE = "/edit-profile";
 const CHANGE_PASSWORD = "/change-password";
-const USER_PROFILE = "/:id";
 const ME = "/me";
 
 // Toilet routes
 const TOILETS = "/toilets";
-const ADD = "/add";
-const COMMENTS = "/comments";
+const TOILET_DETAIL = "/:id";
+const ADD = "/:id/add";
 const EDIT_TOILET = "/:id/edit";
 const DELETE_TOILET = "/:id/delete";
 
@@ -27,8 +26,8 @@ const KAKAO_CALLBACK = "/auth/kakao/callback";
 const API = "/api";
 const GET_NEAR_TOILETS = "/toilets";
 const GET_BOX_TOILETS = "/toilets/box";
-const TOILET_DETAIL = "/toilets/:id";
 const CHECK_EMAIL = "/users/:email";
+const ADD_COMMENT = "/:id/comment";
 
 const routes = {
   home: HOME,
@@ -38,11 +37,9 @@ const routes = {
   users: USERS,
   editProfile: EDIT_PROFILE,
   changePassword: CHANGE_PASSWORD,
-  userProfile: USER_PROFILE,
   me: ME,
   toilets: TOILETS,
   add: ADD,
-  comments: COMMENTS,
   editToilet: EDIT_TOILET,
   deleteToilet: DELETE_TOILET,
 
@@ -51,6 +48,7 @@ const routes = {
   boxToilet: GET_BOX_TOILETS,
   toiletDetail: TOILET_DETAIL,
   checkEmail: CHECK_EMAIL,
+  addComment: ADD_COMMENT,
 
   naver: NAVER,
   naverCallback: NAVER_CALLBACK,

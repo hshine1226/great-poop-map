@@ -3,10 +3,6 @@ import Toilet from "../../models/Toilet";
 
 export const getHome = (req, res) => res.render("home", { pageTitle: "Home" });
 
-export const getToilets = async (req, res) => {
-  res.render("toilets", { pageTitle: "Toilets" });
-};
-
 export const getAdd = async (req, res) => {
   const toilet = await Toilet.find({});
   const name = toilet[0].name;
@@ -16,11 +12,25 @@ export const getAdd = async (req, res) => {
 };
 
 export const getComments = (req, res) => {
-  res.render("comments");
+  res.render("comments", { pageTitle: "Comments" });
 };
 
-export const getToiletDetail = (req, res) =>
-  res.render("index", { pageTitle: "Toilet Detail" });
+export const getToiletDetail = async (req, res) => {
+  const {
+    params: { id },
+  } = req;
+
+  try {
+    const toilet = await Toilet.findById(id)
+      .populate("creator")
+      .populate("comments");
+
+    res.render("toiletDetail", { pageTitle: "Toilet Detail", toilet });
+  } catch (error) {
+    res.redirect(routes.home);
+  }
+};
+
 export const getEditToilet = (req, res) =>
   res.render("index", { pageTitle: "Edit Toilet" });
 export const getDeleteToilet = (req, res) =>

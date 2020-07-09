@@ -3,3 +3,4 @@ import "./googleMap";
 import "./markerClusterer";
 import "./home";
 import "./join";
+import "./addComment";
