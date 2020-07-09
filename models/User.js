@@ -13,8 +13,7 @@ const userSchema = new mongoose.Schema({
   },
   avatarUrl: {
     type: String,
-    default:
-      "blob:https://fontawesome.com/080baef0-6a6e-4131-aa66-cf316ee95a59",
+    default: "/static/poop.png",
   },
   naverId: Number,
   googleId: Number,
