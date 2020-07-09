@@ -28,6 +28,7 @@ const GET_NEAR_TOILETS = "/toilets";
 const GET_BOX_TOILETS = "/toilets/box";
 const CHECK_EMAIL = "/users/:email";
 const ADD_COMMENT = "/:id/comment";
+const DEL_COMMENT = "/:id/delete";
 
 const routes = {
   home: HOME,
@@ -49,6 +50,7 @@ const routes = {
   toiletDetail: TOILET_DETAIL,
   checkEmail: CHECK_EMAIL,
   addComment: ADD_COMMENT,
+  delComment: DEL_COMMENT,
 
   naver: NAVER,
   naverCallback: NAVER_CALLBACK,

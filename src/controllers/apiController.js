@@ -114,6 +114,20 @@ export const postAddComment = async (req, res) => {
   }
 };
 
+export const delComment = async (req, res) => {
+  const {
+    params: { id },
+  } = req;
+
+  try {
+    await Comment.findByIdAndDelete(id);
+  } catch (err) {
+    res.status(400);
+  } finally {
+    res.end();
+  }
+};
+
 export const getBoxToilet = async (req, res) => {
   const {
     body: { bl, ur },
