@@ -10,10 +10,11 @@ block content
         .map__detail(id="js-toiletDetail")
             h1(id="js-toiletName") 
             h1(id="js-toiletTime") 
-            button.findBtn(id="js-findWay", class="invisible bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline cursor-pointer") 길찾기
-            a(href=`/toilets${routes.comments}`)
-                button.commentBtn(id="js-comment", class="invisible bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline cursor-pointer") 한줄평
             
+            button.findBtn(id="js-findWay", class="invisible bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline cursor-pointer") 길찾기
+            a#js-commentAchor
+                button.commentBtn(id="js-comment", class="invisible bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline cursor-pointer") 한줄평
+
             
     
     

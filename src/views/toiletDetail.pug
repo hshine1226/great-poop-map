@@ -13,11 +13,16 @@ block content
                             input(class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" placeholder="댓글 추가")
                             button(class="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded" type="submit") 댓글
                             button(class="flex-shrink-0 border-transparent border-4 text-teal-500 hover:text-teal-800 text-sm py-1 px-2 rounded" type="button") 취소
-        ul.toilet__comments-list#js-commentList
+        div(class="w-full")
+            | 댓글  
+            span#jsCommentNumber #{toilet.comments.length}
+            | 개
+            
+        ul.toilet__comments-list#js-commentList(class="w-full")
             each comment, idx in toilet.comments.reverse()
                 .comments-list-container(class="flex justify-center items-center")
                     .avatar#js-commentAvatar
-                    li(class="max-w-6xl h-auto m-2 p-3 bg-teal-500 rounded-md")
+                    li(class="w-64 max-w-6xl h-auto m-2 p-3 bg-teal-500 rounded-md")
                         span(class="text-teal-200")=comment.text           
                     if loggedUser !== null
                         if String(toilet.comments[idx].creator) === String(loggedUser.id)

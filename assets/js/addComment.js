@@ -3,6 +3,10 @@ import axios from "axios";
 const addCommentForm = document.getElementById("js-addComment");
 const commentList = document.getElementById("js-commentList");
 
+const increaseNumber = () => {
+  const commentNumber = document.getElementById("jsCommentNumber");
+  commentNumber.innerHTML = parseInt(commentNumber.innerHTML, 10) + 1;
+};
 const addComment = (comment, commentId) => {
   const commentsContainer = document.createElement("div");
 
@@ -23,7 +27,7 @@ const addComment = (comment, commentId) => {
   commentsContainer.appendChild(li);
   commentsContainer.appendChild(delBtn);
   commentList.prepend(commentsContainer);
-  // increaseNumber();
+  increaseNumber();
 };
 const sendComment = async (comment) => {
   const toiletId = window.location.href.split("/toilets/")[1];
