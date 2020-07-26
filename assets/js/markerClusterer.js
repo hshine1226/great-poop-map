@@ -65,7 +65,6 @@ export const setToiletsMarker = async (bl, ur) => {
       if (response.status === 200) {
         const toilet = response.data;
         addToiletDetail(toilet);
-        console.log(toilet);
       }
     };
 

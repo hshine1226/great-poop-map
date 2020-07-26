@@ -5,3 +5,6 @@ import "./home";
 import "./join";
 import "./addComment";
 import "./delComment";
+
+// React components
+import "./components/index";

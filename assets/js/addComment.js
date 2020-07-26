@@ -23,7 +23,7 @@ const addComment = (comment, commentId) => {
   span.innerHTML = comment;
   span.classList.value = "text-teal-200";
   li.appendChild(span);
-  li.classList.value = "max-w-6xl h-auto m-2 p-3 bg-teal-500 rounded-md";
+  li.classList.value = "w-64 max-w-6xl h-auto m-2 p-3 bg-teal-500 rounded-md";
   commentsContainer.appendChild(li);
   commentsContainer.appendChild(delBtn);
   commentList.prepend(commentsContainer);

@@ -75,20 +75,6 @@ export const postEditProfile = async (req, res) => {
 export const getChangePassword = (req, res) =>
   res.render("index", { pageTitle: "Change Password" });
 
-export const getUserProfile = async (req, res) => {
-  const {
-    user: { _id: id },
-  } = req;
-
-  try {
-    const user = await User.findById(id);
-    // console.log(user);
-    res.render("profile", { pageTitle: "User Profile", user });
-  } catch (error) {
-    res.redirect("/");
-  }
-};
-
 export const getMe = (req, res) => {
   res.render("profile", { pageTitle: "User Detail", user: req.user });
 };
